@@ -1,0 +1,174 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    overflow: hidden; /* Prevent scrollbar from initial layout */
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px; /* Adjust as needed for ~1-2 inch width on most screens */
+    min-width: 150px; /* Minimum width for the sidebar */
+    background-color: #1a1a1a;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: width 0.3s ease, min-width 0.3s ease, transform 0.3s ease;
+    border-right: 1px solid #333;
+}
+
+.sidebar.hidden {
+    width: 0;
+    min-width: 0;
+    padding: 0;
+    transform: translateX(-100%);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    color: #eee;
+}
+
+.sidebar textarea {
+    width: 100%;
+    flex-grow: 1;
+    min-height: 100px; /* Allow some initial height */
+    padding: 10px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #fff;
+    resize: vertical; /* Allow vertical resizing if needed */
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.hide-button {
+    position: absolute;
+    top: 50%;
+    right: -25px; /* Position it outside the sidebar */
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 0 5px 5px 0;
+    z-index: 10;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content to top/bottom */
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease;
+}
+
+.word-display-wrapper {
+    flex-grow: 1; /* Allows it to take up available space */
+    display: flex;
+    align-items: center; /* Vertically center the word */
+    justify-content: center; /* Horizontally center the word */
+    width: 100%; /* Ensure it spans full width */
+    padding-top: 50px; /* Add some top padding to push it down slightly */
+}
+
+.word-display-wrapper span {
+    font-size: 4em; /* Initial font size for the word */
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2; /* Adjust line height for better readability */
+}
+
+.controls-bottom {
+    display: flex;
+    flex-wrap: wrap; /* Allow controls to wrap on smaller screens */
+    gap: 20px;
+    margin-top: auto; /* Pushes controls to the bottom */
+    padding-bottom: 20px; /* Add some bottom padding */
+    justify-content: center; /* Center controls horizontally */
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls-bottom label {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #ccc;
+    white-space: nowrap; /* Prevent label from wrapping */
+}
+
+.controls-bottom select,
+.controls-bottom button,
+.controls-bottom input[type="range"] {
+    padding: 8px 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    min-width: 100px; /* Ensure buttons and selects have a minimum width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.controls-bottom input[type="range"] {
+    width: 150px; /* Smaller width for sliders */
+    -webkit-appearance: none; /* Override default appearance */
+    height: 8px;
+    border-radius: 5px;
+    background: #555;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.controls-bottom input[type="range"]:hover {
+    opacity: 1;
+}
+
+.controls-bottom input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #eee;
+    cursor: pointer;
+}
+
+.controls-bottom input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #eee;
+    cursor: pointer;
+}
+
+.controls-bottom button:hover {
+    background-color: #555;
+}
+
+.controls-bottom button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
